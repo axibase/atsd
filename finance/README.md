@@ -28,13 +28,14 @@ contactUs:
 <!-- markdownlint-disable MD002 MD041 MD012 -->
 <article class="feature-highlight">
 
-## What you can do with ATSD
-
 <div class="feature-images">
 
 ![](./images/ohlc_1.png) <!-- yaspeller ignore -->
 
 </div>
+<div class="feature-content">
+
+## What you can do with ATSD
 
 - Strategy backtesting on high-frequency data
 - Quantitative and market microstructure research
@@ -42,16 +43,18 @@ contactUs:
 - Market surveillance and anomaly detection
 - Non-transparent ETF/ETN decomposition
 
+</div>
 </article>
 <article class="feature-highlight">
-
-## Streaming & Scheduled Market Data
 
 <div class="feature-images">
 
 ![](./images/stock_5.png) <!-- yaspeller ignore -->
 
 </div>
+<div class="feature-content">
+
+## Streaming & Scheduled Market Data
 
 - FAST, SBE, and proprietary protocols
 - Plain text protocol
@@ -60,16 +63,18 @@ contactUs:
 - End-of-day archives
 - ETL from institutional and retail financial data platforms
 
+</div>
 </article>
 <article class="feature-highlight">
-
-## SQL Engine
 
 <div class="feature-images">
 
 ![](./images/sql_2_iexg.png) <!-- yaspeller ignore -->
 
 </div>
+<div class="feature-content">
+
+## SQL Engine
 
 - Parallel [SQL](./sql.md) engine with syntax extensions
 - Advanced filtering by trading session, auction stage, index composition
@@ -79,16 +84,18 @@ contactUs:
 - Scheduled SQL [reporting](../sql/scheduled-sql.md) with email, file, and web delivery
 - [JDBC](https://github.com/axibase/atsd-jdbc) and [ODBC](https://github.com/axibase/atsd-odbc) drivers
 
+</div>
 </article>
 <article class="feature-highlight">
-
-## REST API
 
 <div class="feature-images">
 
 ![](./images/frac_diff_4.png) <!-- yaspeller ignore -->
 
 </div>
+<div class="feature-content">
+
+## REST API
 
 - Trades: [write](./command-trade-insert.md), [read](./trades-export.md)
 - OHLCV bars: [calculate](./ohlcv-export.md), [write](./session-summary-import-ohlcv.md), [read](./session-summary-export-ohlcv.md) <!-- yaspeller ignore -->
@@ -97,16 +104,18 @@ contactUs:
 - Reference data: [write](./command-instrument-entity.md), [read](./reference-export.md)
 - API clients for [Python](https://github.com/axibase/atsd-api-python) and [Java](https://github.com/axibase/atsd-api-java)
 
+</div>
 </article>
 <article class="feature-highlight">
-
-## ATSD vs Files
 
 <div class="feature-images">
 
 ![](./images/read_write_parallel.png) <!-- yaspeller ignore -->
 
 </div>
+<div class="feature-content">
+
+## ATSD vs Files
 
 - Searching records by index is faster than reading files sequentially
 - Extra performance with caching and parallelized scans
@@ -115,16 +124,18 @@ contactUs:
 - Records can be inserted out-of-order and modified in-place
 - Filter, aggregate, sort without copying data to clients
 
+</div>
 </article>
 <article class="feature-highlight">
-
-## ATSD vs Relational Databases
 
 <div class="feature-images">
 
 ![](./images/atsd_db_2.png) <!-- yaspeller ignore -->
 
 </div>
+<div class="feature-content">
+
+## ATSD vs Relational Databases
 
 - Reduced overhead on critical read and write paths
 - Automated sharding of segmented tables
@@ -132,20 +143,23 @@ contactUs:
 - Optimal compression codecs to reduce I/O and disk space usage
 - Aggregate and analytical functions optimized for financial data
 
+</div>
 </article>
 <article class="feature-highlight">
-
-## Data Ops Included
 
 <div class="feature-images">
 
 ![](./images/chat_alerts_7.png) <!-- yaspeller ignore -->
 
 </div>
+<div class="feature-content">
+
+## Data Ops Included
 
 - Built-in latency monitoring with break-down by data feed and market
 - ETL collector for FTP/SCP/HTTP integrations with task control
 - Rule engine and scheduled SQL for nightly and pre-trade checks
 - Alerting via messengers, webhooks, email
 
+</div>
 </article>

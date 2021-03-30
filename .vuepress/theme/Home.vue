@@ -153,6 +153,7 @@ export default {
       box-sizing border-box
       border-bottom 1px solid darken($accentColor, 10%)
       margin-right 0.8rem;
+      margin-top 0.4rem;
       &:hover
         background-color lighten($accentColor, 10%)
 
@@ -192,41 +193,41 @@ export default {
 
   .feature-highlight
     min-height: 240px;
-    padding: 40px;
+    padding: 40px 0;
+    width: 120%;
+    margin-left: -10%;
+    box-sizing: border-box
 
-    &:nth-child(odd)
-      margin-left: 30%;
-      left 48px
-      // Inverted color
-      // color whitesmoke
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    grid-template-areas: "left sep right";
+    grid-template-rows: 100%;
+    gap: 0 5px;
+    position: relative;
 
-      // Inversion
-      // a
-      //   color #f08d49
-
-      .feature-images
-        left: -490px
-    
-        
-    &:nth-child(even)
-      margin-right: 30%
-      right 48px
-
-      .feature-images
-        right: -490px;
+    .feature-content
+      grid-area: right
+      justify-self: start
 
     .feature-images
-      position: absolute;
-      top: 48px;
-      width: 480px;
+      justify-self: end;
+      grid-area: left;
+      width min-content
 
+      img
+        max-width: 480px;
+        border-radius 4px
+        box-shadow  0 0 8px rgba(0, 0, 0, 0.2),
+                    0 0 2px rgba(0, 0, 0, 0.2),
+                    2px 2px 4px rgba(0, 0, 0, 0.2)
 
-    img
-      max-width: 480px;
-      border-radius 4px
-      box-shadow  0 0 8px rgba(0, 0, 0, 0.2),
-                  0 0 2px rgba(0, 0, 0, 0.2),
-                  2px 2px 4px rgba(0, 0, 0, 0.2)
+  .feature-highlight:nth-child(odd)
+    .feature-images
+      grid-area: right
+      justify-self: start
+    .feature-content
+      justify-self: end
+      grid-area: left
 
   .features
     padding 1.2rem 0
@@ -262,6 +263,14 @@ export default {
   .home
     .hero
       margin-left 0
+
+    .feature-highlight,.feature-highlight:nth-child(odd)
+      width: 100%
+      margin: 0
+    .feature-highlight
+      grid-template-columns: 1fr 20px 2fr;
+    .feature-highlight:nth-child(odd)
+      grid-template-columns: 2fr 20px 1fr;
       
 @media (max-width: $MQMobile)
   .home
@@ -270,6 +279,30 @@ export default {
     .feature
       max-width 100%
       padding 0 2.5rem
+
+    
+@media (max-width: 910px)
+  .home
+    .feature-highlight, .feature-highlight:nth-child(odd)
+      width: max-content
+      margin: 0 auto
+      padding 1rem 0.2rem 2rem 0.2rem
+      display: grid;
+      grid-template-columns: 100%;
+      grid-template-rows: auto auto;
+      grid-template-areas "top" "bottom"
+
+      .feature-content
+        width 100%
+        grid-area bottom
+
+      .feature-images
+        grid-area top
+        width 100%
+
+        img
+          width 100%
+
 
 @media (max-width: $MQMobileNarrow)
   .home
@@ -307,19 +340,9 @@ export default {
       padding 0 0.2rem
       h2
         font-size 1.25rem
-    .feature-highlight
-      padding 1rem 0.2rem 2rem 0.2rem
-      &:nth-child(even), &:nth-child(odd)
-        margin: 0
-        left 0
-        right 0
-
-      .feature-images
-        position static
-        width 100%
-
-      img
-        width 100%
+    .feature-highlight, .feature-highlight:nth-child(odd)
+      width: 100%
+      margin: 0
 
       li
         margin 0.2rem 0
