@@ -284,9 +284,10 @@ export default {
 @media (max-width: 910px)
   .home
     .feature-highlight, .feature-highlight:nth-child(odd)
-      width: max-content
+      width: 640px
+      max-width 100%
       margin: 0 auto
-      padding 1rem 0.2rem 2rem 0.2rem
+      padding 2rem 0.2rem 2rem 0.2rem
       display: grid;
       grid-template-columns: 100%;
       grid-template-rows: auto auto;
@@ -299,6 +300,9 @@ export default {
       .feature-images
         grid-area top
         width 100%
+
+        p
+          text-align center
 
         img
           width 100%
