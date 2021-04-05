@@ -103,7 +103,7 @@ message e:server001 t:type=collector-job t:job=nginx-check t:status=OK
 
 ```bash
 echo -e "message e:server001 t:type=deploy m:\"branch: master\"" \
-  | nc -w 1 atsd_hostname 8081
+  | nc -q 0 atsd_hostname 8081
 ```
 
 * `bash` command
@@ -149,12 +149,12 @@ Append `debug` in front of the command to check server reply. If the command is 
 
 ```bash
 echo -e "debug message e:server001 t:type=deploy m:\"branch: master\"" \
-  | nc -w 1 atsd_hostname 8081
+  | nc -q 0 atsd_hostname 8081
 ```
 
 ```txt
 $ echo -e "debug message e:server001 t:type=deploy m:\"branch: master\"" \
->   | nc -w 1 atsd_hostname 8081
+>   | nc -q 0 atsd_hostname 8081
 ok
 ```
 

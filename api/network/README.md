@@ -26,13 +26,13 @@ To send a single command, connect to an ATSD server, send the command in plain t
 * `netcat`: `echo`
 
 ```bash
-echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc -w 1 atsd_hostname 8081
+echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z" | nc -q 0 atsd_hostname 8081
 ```
 
 * `netcat`: `printf`
 
 ```bash
-printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc -w 1 atsd_hostname 8081
+printf 'series e:station_2 m:temperature=32.2 m:humidity=81.4 s:1463271035' | nc -q 0 atsd_hostname 8081
 ```
 
 * `bash` [tcp pseudo-device file](http://tldp.org/LDP/abs/html/devref1.html#DEVTCP)
@@ -83,7 +83,7 @@ A trailing line feed is not required for the last command in the batch.
 Use the `-e` option in `echo` commands to enable interpretation of backslash escapes.
 
 ```bash
-echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=32.1 m:humidity=82.4 d:2016-05-15T00:25:00Z" | nc -w 1 atsd_hostname 8081
+echo -e "series e:station_1 m:temperature=32.2 m:humidity=81.4 d:2016-05-15T00:10:00Z\nseries e:station_1 m:temperature=32.1 m:humidity=82.4 d:2016-05-15T00:25:00Z" | nc -q 0 atsd_hostname 8081
 ```
 
 ```java
