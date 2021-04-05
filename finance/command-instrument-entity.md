@@ -3,7 +3,7 @@
 To insert instrument reference data, send the [`entity`](../api/network/entity.md) command to port `8081` (TCP) or port `8082` (UDP).
 
 ```bash
-echo -e "entity e:tsla_[iexg] t:class_code=IEXG t:symbol=TSLA t:name=\"Tesla Inc.\" t:industry=Autos" > /dev/tcp/atsd_hostname/8081
+echo -e "entity e:tsla_[iexg] t:class_code=IEXG t:symbol=TSLA t:name=\"Tesla Inc.\" t:industry=Autos" | nc -q 0 atsd_hostname 8081
 ```
 
 The commands must be terminated by line break. Multiple commands can be sent over the same connection.

@@ -3,7 +3,7 @@
 The endpoint consumes a stream of order book [statistics](./statistics-fields.md) in plain text format on port `8091` (TCP) or port `8092` (UDP). Each line can contain multiple fields such as current daily volume, last price, auction volume etc.
 
 ```bash
-echo -e "IEXG,TSLA,1610622170591,5,16=845.15,17=100,42=845.15" | gzip > /dev/tcp/atsd_hostname/8091
+echo -e "IEXG,TSLA,1610622170591,5,16=845.15,17=100,42=845.15" | gzip | nc -q 0 atsd_hostname 8091
 ```
 
 The content **must be compressed** with `gzip`.

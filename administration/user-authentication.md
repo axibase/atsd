@@ -42,11 +42,13 @@ Requests authenticated with **Basic Authentication** are subject to the same per
 
 ### Token Authentication
 
-An HTTP request to a specific API URL starting with `/api/` can be authenticated by providing a previously issued API token in the request. The token must be included in the `Authorization` header with type `Bearer`.
+An HTTP request to a specific API URL starting with `/api/` can be authenticated by including the `Authorization` header with type `Bearer`.
 
 ```sh
 --header "Authorization: Bearer <API-TOKEN>"
 ```
+
+> Passing the token in the URL is not supported because of the security [weaknesses](https://tools.ietf.org/html/rfc6750#section-2.3).
 
 The token allows access to a **specific** URL, consisting of path and query parameters. The URL and the HTTP method are fixed at the time the token is created. The order of query parameters and the URL-encoding scheme is not important.
 
@@ -74,7 +76,7 @@ Token authentication does not require sharing username and password with client 
 ```bash
 curl https://atsd_hostname:8443/api/v1/csv?config=base-parser \
   --insecure --request POST \
-  --header "Authorization: Bearer Ka2ZUE-j2Voh075_VOaayncc4fUhnTrzPoMJ" \
+  --header "Authorization: Bearer <API-TOKEN>" \
   --header "Content-Type: text/csv" \
   --form "data=@daily.csv"
 ```

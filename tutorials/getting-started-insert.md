@@ -27,12 +27,12 @@ Open the console and send these commands into ATSD.
 
 ```bash
 echo -e "series e:br-1905 m:temperature=25" \
-  > /dev/tcp/atsd_hostname/8081
+  | nc -q 0 atsd_hostname 8081
 ```
 
 ```bash
 echo -e "entity e:br-1905 t:serial_number=N12002" \
-  > /dev/tcp/atsd_hostname/8081
+  | nc -q 0 atsd_hostname 8081
 ```
 
 Refresh the **Series Statistics** page and **Entity Editor** to verify that the temperature sample is received and the entity tag `series_number` is set.

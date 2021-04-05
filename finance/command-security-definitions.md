@@ -3,7 +3,7 @@
 To insert metadata about an instrument into the database, send the [`property`](../api/network/property.md) command with type `security_definitions` to port `8081` (TCP) or port `8082` (UDP).
 
 ```bash
-echo -e "property e:tsla_[iexg] t:security_definitions ms:1610604976193 v:symbol=TSLA v:tradingsessionid=IEXG v:roundlot=10" > /dev/tcp/atsd_hostname/8081
+echo -e "property e:tsla_[iexg] t:security_definitions ms:1610604976193 v:symbol=TSLA v:tradingsessionid=IEXG v:roundlot=10" | nc -q 0 atsd_hostname 8081
 ```
 
 The commands of type `security_definitions` are processed by the `security_definition_update` rule in the rule engine and are converted to entity commands.

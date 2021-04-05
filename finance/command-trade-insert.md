@@ -3,18 +3,18 @@
 The endpoint consumes a stream of trades in CSV format on port `8085` (TCP) or port `8086` (UDP). It provides a simple alternative to binary protocols such as FAST, SBE, and proprietary specifications.
 
 ```bash
-echo -e "2415548,1614603602208,492,IEXG,TSLA,IEX,,5,688.57,,X,96" > /dev/tcp/atsd_hostname/8085
+echo -e "2415548,1614603602208,492,IEXG,TSLA,IEX,,5,688.57,,X,96" | nc -q 0 atsd_hostname 8085
 ```
 
 To insert multiple commands from file:
 
 ```bash
 # Skip header with tail
-tail -n +2 trades.csv > /dev/tcp/localhost/8085
+tail -n +2 trades.csv | nc -q 0 atsd_hostname 8085
 ```
 
 ```bash
-tar -xzOf trades.csv.tar.gz | tail -n +2 > /dev/tcp/localhost/8085
+tar -xzOf trades.csv.tar.gz | tail -n +2 | nc -q 0 atsd_hostname 8085
 ```
 
 The endpoint is primarily used by market data consumer applications.

@@ -25,13 +25,13 @@ curl --remote-name-all https://axibase.com/files/{gs_reference.cmd,gs_eod_ohlcv.
 Insert reference data.
 
 ```bash
-cat gs_reference.cmd > /dev/tcp/atsd_hostname/8081
+cat gs_reference.cmd | nc -q 0 atsd_hostname 8081
 ```
 
 Insert trades.
 
 ```bash
-gunzip -c gs_trades.csv.gz > /dev/tcp/atsd_hostname/8085
+gunzip -c gs_trades.csv.gz > | nc -q 0 atsd_hostname 8085
 ```
 
 Insert end-of-day aggregates. Replace `<username>` and `<password>` with the account credentials specified above.
