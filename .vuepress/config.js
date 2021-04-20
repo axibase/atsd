@@ -407,6 +407,7 @@ const financeMenuRu = [
     },
     {
         title: "Примеры", children: [
+            ['./notes/cross-trade.md', 'Обнаружение кросс-сделок'],
             ['./notes/moex_waprice.md', 'Расчет waprice']
         ]
     },
