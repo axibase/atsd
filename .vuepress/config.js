@@ -407,8 +407,9 @@ const financeMenuRu = [
     },
     {
         title: "Примеры", children: [
+            ['./notes/market-order-myths.md', 'Мифы о рыночных заявках'],
             ['./notes/cross-trade.md', 'Обнаружение кросс-сделок'],
-            ['./notes/moex_waprice.md', 'Расчет waprice']
+            ['./notes/moex_waprice.md', 'Расчет waprice без РПС']
         ]
     },
     {
