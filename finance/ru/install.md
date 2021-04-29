@@ -8,11 +8,12 @@
 
 Установите Java 8 для ATSD согласно [инструкции](../../administration/migration/install-java-8.md).
 
-Установите Java 15 (при установке MOEX консьюмеров на данном сервере) через менеджер пакетов.
+Установите Java 16 (при установке MOEX консьюмеров на данном сервере) через менеджер пакетов.
 
 ```sh
+sudo apt install zip unzip # Архиватор необходим для установки SDKMAN
 curl -s "https://get.sdkman.io" | bash
-sdk install java 15.0.2-librca
+sdk install java 16.0.1-librca
 ```
 
 ## Установка ATSD
@@ -38,19 +39,19 @@ MOEX консьюмеры являются самостоятельными Java
 
 ```bash
 curl -O https://www.axibase.com/public/moex-consumer.tar.gz
-tar -xzf moex-consumer.tar.gz /opt/moex-consumer
+tar -xzf moex-consumer.tar.gz -C /opt moex-consumer
 ```
 
 Присвойте переменной окружения `JAVA_HOME` путь к версии Java, используемой консьюмером.
 
 ```sh
-sdk use java 15.0.2-librca
+sdk use java 16.0.1-librca
 ```
 
 Запустите установочный скрипт.
 
 ```sh
-/opt/moex-consumer/install.sh
+/opt/moex-consumer/scripts/install.sh
 ```
 
 Параметры `atsd.host`, `atsd.port.tcp`, `atsd.port.udp` позволяют указать ATSD, на которую будут отправлены команды. Данные параметры необходимы в случае распределенной инсталляции.
@@ -60,6 +61,8 @@ systemctl start moex-consumer-asts-fond
 systemctl start moex-consumer-asts-fx
 systemctl start moex-consumer-spectra
 ```
+
+Альтернативный способ запуска и остановки консьюмеров – через скрипты `start.sh` и `stop.sh` в каталогах `/opt/moex-consumer/{asts-fx,asts-fond,spectra}/bin`
 
 ## Настройка операционной системы
 
