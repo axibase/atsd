@@ -21,7 +21,7 @@ An order book snapshot describes the book state for the specified instrument at 
 | `endDate`  | **[Required]** End date in [ISO format](../shared/date-format.md#supported-formats), exclusive |
 | `session` | Session name, one of `Morning`, `Day`, `Evening`.<br>Default value: `Day` |
 | `stage` | Session [stage](./sessions.md).<br>Default value: `N` |
-| `fields` | List of statistics to include in the response.<br>If specified, `datetime`, `symbol`, and at least one [statistics](statistics-fields.md) field are required. |
+| `fields` | List of columns to include in the response.<br>If specified, `datetime`, `symbol`, and at least one [statistics](statistics-fields.md) field are required. |
 
 :::tip Note
 `symbol`, `class`, `session`, and `stage` fields can enumerate multiple values specified as a comma-separated list `symbol=A,B` or multiple parameters in the query string `&symbol=A&symbol=B`.
