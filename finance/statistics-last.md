@@ -16,7 +16,7 @@ The endpoint retrieves current statistics values for the instrument in JSON form
 | `class` | **[Required]** Market identifier [code](https://www.iso20022.org/market-identifier-codes) such as `XNGS` for NASDAQ, `XNYS`/`ARCX` for NYSE, `IEXG` for IEX, `SETS`/`SEAQ`/`IOB` for LSE, or `TQBR`/`TQCB`/`CETS` for MOEX.  |
 | `exchange` | Exchange or trading venue name, such as `NASDAQ`, `NYSE`, `IEX`, `LSE`, `MOEX`. |
 | `timestamp` | **[Required]** Timestamp in ISO format.  |
-| `statistics` | List of [statistics](statistics-fields.md) to include in the response. If not specified, all non-empty statistics will be returned. |
+| `statistics` | List of [statistics](statistics-fields.md) to include in the response. If not specified, all non-empty statistics are returned. |
 
 ```txt
 GET /api/v1/trade-statistics/last?symbol=MOEX&class=TQBR&statistics=bid,offer,last,qty,value,change
