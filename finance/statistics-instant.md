@@ -29,11 +29,18 @@ GET /api/v1/trade-statistics/instant?symbol=MOEX&class=TQBR&timestamp=2021-04-19
 ```json
 {
   "datetime": "2021-04-19T17:09:15.882353Z",
-  "bid": "173.8",
-  "offer": "173.84",
-  "last": "173.8",
-  "qty": "5",
-  "value": "8690",
-  "change": "0.33"
+  "instrument": {
+    "symbol": "MOEX",
+    "class": "TQBR",
+    "exchange": "MOEX"
+  },
+  "statistics": {
+    "bid": "173.8",
+    "offer": "173.84",
+    "last": "173.8",
+    "qty": "5",
+    "value": "8690",
+    "change": "0.33"
+  }
 }
 ```
