@@ -43,3 +43,11 @@ GET /api/v1/trade-statistics/last?symbol=MOEX&class=TQBR&statistics=bid,offer,la
   }
 }
 ```
+
+## SQL Alternative
+
+```sql
+SELECT tags.symbol, STAT.bid, STAT.offer, STAT.last, STAT.qty, STAT.value, STAT.change
+  FROM atsd_entity
+WHERE tags.class_code = 'TQBR' AND tags.symbol = 'MOEX'
+```
