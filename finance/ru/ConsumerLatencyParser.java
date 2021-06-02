@@ -12,18 +12,14 @@ import java.time.LocalTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 import java.util.zip.GZIPInputStream;
 
 import org.apache.commons.math3.stat.descriptive.DescriptiveStatistics;
 
 public class ConsumerLatencyParser {
 
-	public static Integer fileIndex(File f) {
+	public static int fileIndex(File f) {
 		String name = f.getName();
 		//statistics.19-02-2021.1.log.gz
 		String[] parts = name.split("\\.");
@@ -31,25 +27,34 @@ public class ConsumerLatencyParser {
 	}
 
 	private static final DateTimeFormatter DTF_MIN = DateTimeFormatter.ofPattern("yyMMddHHmm");
+	private static final DateTimeFormatter TF_MIN = DateTimeFormatter.ofPattern("HHmm");
 
 	// not Thread-safe, but 40% faster
 	//210224180237044631 > 2102241802 37044631
 	private static String lastMinuteTime = null;
 	private static LocalDateTime lastLocalDateTime = null;
-	private static LocalDateTime parseMicro(String str) {
-		long nanos = 1000L*Integer.parseInt(str.substring(10));
-		String minPart = str.substring(0, 10);
-		if (minPart.equals(lastMinuteTime)) {
-			return lastLocalDateTime.plusNanos(nanos);
-		}
 
-		lastMinuteTime = minPart;
-		lastLocalDateTime = DTF_MIN.parse(minPart, LocalDateTime::from);
+	private static LocalDateTime parseMicroUsingFullFormat(String yyMMddHHMMssSSSSSS) {
+		if (lastMinuteTime == null || !lastMinuteTime.regionMatches(0, yyMMddHHMMssSSSSSS, 0, 10)) {
+			String minPart = yyMMddHHMMssSSSSSS.substring(0, 10);
+			lastMinuteTime = minPart;
+			lastLocalDateTime = DTF_MIN.parse(minPart, LocalDateTime::from);
+		}
+		long nanos = 1000L*Integer.parseInt(yyMMddHHMMssSSSSSS.substring(10));
+		return lastLocalDateTime.plusNanos(nanos);
+	}
+
+	private static LocalDateTime parseMicroUsingShortFormat(String hhMMssSSSSSS, LocalDate localDate) {
+		if (lastMinuteTime == null || !lastMinuteTime.regionMatches(0, hhMMssSSSSSS, 0, 4)) {
+			String minPart = hhMMssSSSSSS.substring(0, 4);
+			lastMinuteTime = minPart;
+			lastLocalDateTime = LocalDateTime.of(localDate, TF_MIN.parse(minPart, LocalTime::from));
+		}
+		long nanos = 1000L*Integer.parseInt(hhMMssSSSSSS.substring(4));
 		return lastLocalDateTime.plusNanos(nanos);
 	}
 
 	public static void main(String[] args) throws Exception {
-
 		String directory = args[0];
 		String filePrefix = args[1];
 		String date = args[2];
@@ -89,7 +94,11 @@ public class ConsumerLatencyParser {
 			throw new Exception("No files matched: " + directory + "/" + filePrefix + "." + date + ".*.log.gz");
 		}
 
-		Arrays.sort(files, (a, b) -> fileIndex(a).compareTo(fileIndex(b)));
+		files = Arrays.stream(files)
+				.map(f -> new AbstractMap.SimpleEntry<>(f, fileIndex(f)))
+				.sorted(Map.Entry.comparingByValue())
+				.map(AbstractMap.SimpleEntry::getKey)
+				.toArray(File[]::new);
 
 		System.out.println("Files found: " + files.length + " in " + directory + " for " + date);
 
@@ -223,7 +232,7 @@ public class ConsumerLatencyParser {
 					}
 				}
 
-				LocalDateTime sendingTime = getSendingTime(sp, indexSendingTime);
+				LocalDateTime sendingTime = getSendingTime(sp, indexSendingTime, localDate);
 
 				int minutes_of_day = sendingTime.getHour()*60 + sendingTime.getMinute();
 
@@ -267,7 +276,7 @@ public class ConsumerLatencyParser {
 				LocalDateTime processTime = getTimeFromStandardFormat(sp, indexProcessTime, localDate);
 				LocalDateTime receiveTime = getTimeFromStandardFormat(sp, indexReceiveTime, localDate);
 				LocalDateTime lastUpdateTime = getTimeFromStandardFormat(sp, indexLastUpdateTime, localDate);
-				LocalDateTime entryTime = getEntryTime(sp, indexMDEntryDate, indexMDEntryTime, indexReceiveTime);
+				LocalDateTime entryTime = getEntryTime(sp, indexMDEntryDate, indexMDEntryTime, localDate);
 
 				if (mode >= 1) {
 					//only read and parse
@@ -390,11 +399,10 @@ public class ConsumerLatencyParser {
 		dsMap.computeIfAbsent(ActionAndType.ofActionAndType(action, type), k -> new DescriptiveStatistics()).addValue(interval_micros);
 	}
 
-	private static final DateTimeFormatter DTF_SEC   = DateTimeFormatter.ofPattern("yyMMddHHmmss");
-	private static final DateTimeFormatter DTF_MILLI = DateTimeFormatter.ofPattern("yyMMddHHmmssSSS");
-	private static final DateTimeFormatter DTF_MICRO = DateTimeFormatter.ofPattern("yyMMddHHmmssSSSSSS");
-	private static final DateTimeFormatter DTF_NANO  = DateTimeFormatter.ofPattern("yyMMddHHmmssSSSSSSSSS");
-	private static final DateTimeFormatter TF_MICRO  = DateTimeFormatter.ofPattern("HHmmssSSSSSS");
+	private static final DateTimeFormatter TF_SEC = DateTimeFormatter.ofPattern("HHmmss");
+	private static final DateTimeFormatter TF_MILLI = DateTimeFormatter.ofPattern("HHmmssSSS");
+	private static final DateTimeFormatter TF_MICRO = DateTimeFormatter.ofPattern("HHmmssSSSSSS");
+	private static final DateTimeFormatter TF_NANO = DateTimeFormatter.ofPattern("HHmmssSSSSSSSSS");
 
 	public static LocalDateTime getTimeFromStandardFormat(String[] sp, int idx, LocalDate date) {
 		if (idx < 0) {
@@ -406,9 +414,9 @@ public class ConsumerLatencyParser {
 			return null;
 		}
 		if (str.length() == 12) {
-			return date.atTime(LocalTime.parse(str, TF_MICRO));
+			return parseMicroUsingShortFormat(str, date);
 		}
-		return parseMicro(str);
+		return parseMicroUsingFullFormat(str);
 	}
 
 	public static LocalDateTime getSendingTime(String[] sp, int idx, LocalDate date) {
@@ -420,14 +428,14 @@ public class ConsumerLatencyParser {
 			return null;
 		}
 		switch (str.length()) {
-			case 18: return parseMicro(str);
-			case 17: return LocalDateTime.parse(str.substring(2), DTF_MILLI);
-			case 12: return date.atTime(LocalTime.parse(str, TF_MICRO));
+			case 18: return parseMicroUsingFullFormat(str);
+			case 17: return LocalDateTime.of(date, LocalTime.parse(str.substring(8), TF_MILLI));
+			case 12: return parseMicroUsingShortFormat(str, date);
 			default: throw new RuntimeException("Unexpected sendingTime " + str);
 		}
 	}
 
-	public static LocalDateTime getEntryTime(String[] sp, int indexDate, int indexTime, int indexReceiveTime) {
+	public static LocalDateTime getEntryTime(String[] sp, int indexDate, int indexTime, LocalDate localDate) {
 		if (indexTime < 0) {
 			return null;
 		}
@@ -436,42 +444,35 @@ public class ConsumerLatencyParser {
 			return null;
 		}
 		String dateStr = sp[indexDate];
-		String receiveDate = sp[indexReceiveTime].substring(0, 6);
-		if (dateStr.isEmpty()) {
-			dateStr = receiveDate;
-		} else {
-			dateStr = dateStr.substring(2);
-			if (!dateStr.equals(receiveDate)) {
-				// previous day? 20210219,210000000000000 -> 0210220 (same day in Moscow)
-				return null;
-			}
+		if (!dateStr.isEmpty()) { // previous day
+			return null;
 		}
 
 		//avoid string format for perf
 		int tlen = timeStr.length();
 		DateTimeFormatter df = null;
 		if (tlen <= 6) {
-			df = DTF_SEC;
+			df = TF_SEC;
 			timeStr = String.format("%06d", Long.parseLong(timeStr));
 			//second-level precision doesn't make sense for latency monitoring
 			return null;
 		} else if (tlen == 11) {
 			// 70958834009 > 070958834009
 			timeStr = "0" + timeStr;
-			df = DTF_MICRO;
-			return parseMicro(dateStr + timeStr);
+			df = TF_MICRO;
+			return parseMicroUsingShortFormat(timeStr, localDate);
 		} else if (tlen == 12) {
-			df = DTF_MICRO;
-			return parseMicro(dateStr + timeStr);
+			df = TF_MICRO;
+			return parseMicroUsingShortFormat(timeStr, localDate);
 		} else if (tlen == 14) {
 			timeStr = "0" + timeStr;
-			df = DTF_NANO;
+			df = TF_NANO;
 		} else if (tlen == 15) {
-			df = DTF_NANO;
+			df = TF_NANO;
 		} else {
 			throw new RuntimeException("Unexpected time string: " + timeStr);
 		}
-		return LocalDateTime.parse(dateStr + timeStr, df);
+		return LocalDateTime.of(localDate, LocalTime.parse(timeStr, df));
 
 	}
 
