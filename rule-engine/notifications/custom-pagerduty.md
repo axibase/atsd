@@ -2,7 +2,7 @@
 
 ## Overview
 
-The following example demonstrates how to register an incident in [PagerDuty](https://www.pagerduty.com/) using a [`CUSTOM`](custom.md) webhook in the ATSD rule engine.
+The following example demonstrates how to register an incident in PagerDuty using a [`CUSTOM`](custom.md) webhook in the ATSD rule engine.
 
 The integration relies on the [PagerDuty API](https://v2.developer.pagerduty.com/v2/page/api-reference#!/Incidents/post_incidents) `create-an-incident` method.
 
