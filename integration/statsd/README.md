@@ -92,7 +92,7 @@ Open the **Plugins** menu on the WordPress administration page.
 
 ![](./resources/plugins_menu.png)
 
-Click **Add New**. Find and install the [StatsD WordPress Client](https://wordpress.org/plugins/statsd/) plugin:
+Click **Add New**. Install the StatsD WordPress Client plugin:
 
 ![](./resources/statsd_plugin1.png)
 
