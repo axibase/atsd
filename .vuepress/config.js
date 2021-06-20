@@ -406,14 +406,6 @@ const financeMenuRu = [
         ]
     },
     {
-        title: "Примеры", children: [
-            ['./notes/moex_dma.md', 'Прямое подключение к бирже'],
-            ['./notes/market-order-myths.md', 'Мифы о рыночных заявках'],
-            ['./notes/cross-trade.md', 'Обнаружение кросс-сделок'],
-            ['./notes/moex_waprice.md', 'Расчет waprice без РПС']
-        ]
-    },
-    {
         title: "Установка", children: [
             ['./install.md', 'Дистрибутивы и требования']
         ]
@@ -421,6 +413,14 @@ const financeMenuRu = [
     {
         title: "Мониторинг", children: [
             ['./latency_monitoring.md', 'Мониторинг данных']
+        ]
+    },
+    {
+        title: "Блог", children: [
+            ['./notes/moex_dma.md', 'Прямое подключение к бирже'],
+            ['./notes/market-order-myths.md', 'Мифы о рыночных заявках'],
+            ['./notes/cross-trade.md', 'Обнаружение кросс-сделок'],
+            ['./notes/moex_waprice.md', 'Расчет waprice без РПС']
         ]
     }
 ];
