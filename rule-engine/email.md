@@ -167,7 +167,7 @@ ${entity} received message '${abbreviate(tags.notification, 50)}'
 
 ### Text Field
 
-The **Text** field can include any text including [emoji](https://unicode.org/emoji/charts/full-emoji-list.html) and HTML [entity characters](https://dev.w3.org/html5/html-author/charref) as well as [placeholders](placeholders.md).
+The **Text** field can include any text including emoji and HTML [entity characters](https://dev.w3.org/html5/html-author/charref) as well as [placeholders](placeholders.md).
 
 Unlike the **Subject** field, **Text** is not constrained by a length limit and supports HTML markup.
 
