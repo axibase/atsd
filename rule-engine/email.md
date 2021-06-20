@@ -153,7 +153,7 @@ Warning! Rule JVM Memory Low for server nurswgvml007 is active.
 
 ### Subject Field
 
-The **Subject** field can include plain text, HTML [entity characters](https://dev.w3.org/html5/html-author/charref), and [emoji](https://unicode.org/emoji/charts/full-emoji-list.html). HTML markup is **not** supported.
+The **Subject** field can include plain text, HTML [entity characters](https://dev.w3.org/html5/html-author/charref), and emoji. HTML markup is **not** supported.
 
 ![](./images/email-subject.png)
 
