@@ -59,7 +59,7 @@ To restrict results to series with specific tags, specify one or multiple tag na
 |**Name**|**Type**|**Description**|
 |:---|:---|:---|
 |`limit`|integer|Limit the response to last `N` samples for each series.<br>The constraint applies to each series in the response separately.<br>Default: `0` (unlimited).<br>Example: `limit=1`. |
-|`columns`|string|_Applies to CSV format_.<br>Columns included in the response.<br>Possible values: `time`, `date`, `entity`, `metric`, `value`, requested tag names (prefixed by `t:`).<br>Default: `time`, `entity`, `metric`, requested tag names, `value`.<br>Example: `columns=time,t:disk,value`. |
+|`fields`|string|_Applies to CSV format_.<br>Columns included in the response.<br>Possible values: `time`, `date`, `entity`, `metric`, `value`, requested tag names (prefixed by `t:`).<br>Default: `time`, `entity`, `metric`, requested tag names, `value`.<br>Example: `columns=time,t:disk,value`. |
 |`timeFormat`|string|_Applies to JSON format_.<br>Timestamp format in the `data` array in the JSON document.<br>Possible values: `iso`, `milliseconds`. Default: `milliseconds`.<br>Example: `timeFormat=iso`. |
 
 ## Response
