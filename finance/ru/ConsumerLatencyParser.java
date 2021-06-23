@@ -549,7 +549,7 @@ public class ConsumerLatencyParser {
 	private static Map<StatisticsMetadata, Supplier<Map<String, Double>>> calculateStatistics(String fromStr, String toStr, ConsumerLatencyParser data) {
 		final long calculateStartTime = System.currentTimeMillis();
 		final ResizableDoubleArray array = data.getTimestamps(fromStr, toStr);
-		final ResizableDoubleArray latenciesAll = Arrays.stream(array.getInternalValues())
+		final ResizableDoubleArray latenciesAll = array.getNumElements() == 0 || Arrays.stream(array.getInternalValues())
 				.limit(array.getNumElements())
 				.anyMatch(Double::isNaN) ? filter(array, array.getNumElements(), i -> true) : array;
 		if (latenciesAll == null) {
