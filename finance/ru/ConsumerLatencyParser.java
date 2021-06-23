@@ -4,7 +4,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.Supplier;
 import java.util.function.ToDoubleFunction;
@@ -53,7 +52,7 @@ public class ConsumerLatencyParser {
 	private final ResizableDoubleArray entryToSending = new ResizableDoubleArray(100_000);
 	private final ResizableByteArray actions = new ResizableByteArray(100_000);
 	private final ResizableByteArray types = new ResizableByteArray(100_000);
-	private final SetsContainer sets = new SetsContainer();
+	private SetsContainer sets = new SetsContainer();
 
 	public ResizableDoubleArray getTimestamps(String from, String to) {
 		if ("process".equals(to)) {
@@ -178,18 +177,15 @@ public class ConsumerLatencyParser {
 		}
 
 		final String effectiveDate = date;
-		final ConsumerLatencyParser[] tasks = parallelize(Arrays.stream(files)
+		final ConsumerLatencyParser parsed = merge(parallelize(Arrays.stream(files)
 				.map(file -> new ConsumerLatencyParser(effectiveDate, mode, filterInstrument, consumerType, file))
 				.map(ConsumerLatencyParser::parse), ioParallelism)
-				.toArray(new ConsumerLatencyParser[0]);
+				.toArray(new ConsumerLatencyParser[0]));
 
 		if (mode <= 0) {
 			final long beforeCalculations = System.currentTimeMillis();
 			System.out.println("Spent on reading: " + (beforeCalculations - st) + " ms");
-			for (ConsumerLatencyParser task : tasks) {
-				task.compact();
-			}
-			writeCsvSummary(date, directory, filePrefix, csvPath, tasks, calcParallelism);
+			writeCsvSummary(date, loggerName, filePrefix, csvPath, parsed, calcParallelism);
 			System.out.println("Spent on calculations: " + (System.currentTimeMillis() - beforeCalculations) + " ms");
 		} else {
 			System.out.println("Skip writing to file");
@@ -197,6 +193,58 @@ public class ConsumerLatencyParser {
 
 		System.out.println("Completed");
 		System.out.println("Elapsed: " + (System.currentTimeMillis() - st) + " ms");
+	}
+
+	private static ConsumerLatencyParser merge(ConsumerLatencyParser[] tasks) {
+		final ConsumerLatencyParser result = tasks[0];
+		final int length = tasks.length;
+		if (length == 1) {
+			return result;
+		}
+		final int totalCount = Arrays.stream(tasks).mapToInt(d -> d.actions.numElements).sum();
+		move(Arrays.stream(tasks).skip(1).map(t -> t.sendingToProcess), result.sendingToProcess, totalCount);
+		move(Arrays.stream(tasks).skip(1).map(t -> t.lastUpdateToProcess), result.lastUpdateToProcess, totalCount);
+		move(Arrays.stream(tasks).skip(1).map(t -> t.receiveToProcess), result.receiveToProcess, totalCount);
+		move(Arrays.stream(tasks).skip(1).map(t -> t.entryToProcess), result.entryToProcess, totalCount);
+		move(Arrays.stream(tasks).skip(1).map(t -> t.lastUpdateToSending), result.lastUpdateToSending, totalCount);
+		move(Arrays.stream(tasks).skip(1).map(t -> t.sendingToReceive), result.sendingToReceive, totalCount);
+		move(Arrays.stream(tasks).skip(1).map(t -> t.entryToSending), result.entryToSending, totalCount);
+		move(Arrays.stream(tasks).skip(1).map(t -> t.actions), result.actions, totalCount);
+		move(Arrays.stream(tasks).skip(1).map(t -> t.types), result.types, totalCount);
+		result.sets = SetsContainer.merged(Arrays.stream(tasks).map(d -> d.sets).toArray(SetsContainer[]::new));
+		return result;
+	}
+
+	private static void move(Stream<ResizableByteArray> fromArr, ResizableByteArray to, int totalCount){
+		int index = to.numElements;
+		to.internalArray = Arrays.copyOf(to.internalArray, totalCount);
+		final byte[] internalValuesTarget = to.internalArray;
+		final Iterator<ResizableByteArray> iterator = fromArr.iterator();
+		while (iterator.hasNext()) {
+			ResizableByteArray from = iterator.next();
+			final byte[] internalValuesSrc = from.internalArray;
+			final int size = from.numElements;
+			System.arraycopy(internalValuesSrc, 0, internalValuesTarget, index, size);
+			index += size;
+			from.numElements = 0;
+			from.contract();
+		}
+	}
+
+	private static void move(Stream<ResizableDoubleArray> fromArr, ResizableDoubleArray to, int totalCount) {
+		int index = to.getNumElements();
+		to.setNumElements(totalCount);
+		final double[] internalValuesTarget = to.getInternalValues();
+		final Iterator<ResizableDoubleArray> iterator = fromArr.iterator();
+		while (iterator.hasNext()) {
+			ResizableDoubleArray from = iterator.next();
+			final double[] internalValuesSrc = from.getInternalValues();
+			final int size = from.getNumElements();
+			System.arraycopy(internalValuesSrc, 0, internalValuesTarget, index, size);
+			index += size;
+			from.setNumElements(0);
+			from.contract();
+		}
 	}
 
 	private static long parseTimeOffsetNanos(String hhMMssSSSSSS, int startIdx) {
@@ -415,21 +463,6 @@ public class ConsumerLatencyParser {
 		return this;
 	}
 
-	private void compact() {
-		if ((actions.internalArray.length - actions.numElements) / (1.0 * actions.numElements) > 0.1) {
-			actions.contract();
-			types.contract();
-			sendingToProcess.contract();
-			sendingToProcess.contract();
-			lastUpdateToProcess.contract();
-			receiveToProcess.contract();
-			entryToProcess.contract();
-			lastUpdateToSending.contract();
-			sendingToReceive.contract();
-			entryToSending.contract();
-		}
-	}
-
 	private void addLatency(ResizableDoubleArray array, long fromNanos, long toNanos) {
 		if (fromNanos == Long.MIN_VALUE || toNanos == Long.MIN_VALUE) {
 			array.addElement(Double.NaN);
@@ -438,12 +471,11 @@ public class ConsumerLatencyParser {
 		}
 	}
 
-	private static void writeCsvSummary(String date, String directory, String filePrefix, String csvPath, ConsumerLatencyParser[] data, int parallelismLevel) throws IOException {
+	private static void writeCsvSummary(String date, String loggerName, String filePrefix, String csvPath, ConsumerLatencyParser data, int parallelismLevel) throws IOException {
 		if (parallelismLevel <= 0 || parallelismLevel == ForkJoinPool.getCommonPoolParallelism()) {
 			parallelismLevel = 0;
 		}
-		final SetsContainer mergedSets = SetsContainer.merged(Arrays.stream(data).map(d -> d.sets).toArray(SetsContainer[]::new));
-		final int totalValues = Arrays.stream(data).mapToInt(d -> d.actions.numElements).sum();
+		final int totalValues = data.actions.numElements;
 		System.out.println("Sample count: " + totalValues);
 		System.out.printf("Memory consumed total: %.1f MB, per metric: %.1f MB%n", (7 * 8L + 2) * totalValues / 1024.0 / 1024.0, 8L * totalValues / 1024.0 / 1024.0);
 		final Stream<String> stream = Stream.of(
@@ -455,7 +487,7 @@ public class ConsumerLatencyParser {
 				Pair.create("lastupdate", "process"),
 				Pair.create("sending", "process")
 		)
-				.flatMap(pair -> calculateStatistics(pair.getFirst(), pair.getSecond(), data, mergedSets, totalValues).entrySet().stream())
+				.flatMap(pair -> calculateStatistics(pair.getFirst(), pair.getSecond(), data).entrySet().stream())
 				.sorted(Comparator.comparing((Map.Entry<StatisticsMetadata, Supplier<Map<String, Double>>> a) -> a.getKey().mdUpdateAction)
 						.thenComparing(b -> b.getKey().mdEntryType)
 						.thenComparing(a -> a.getKey().from)
@@ -466,7 +498,7 @@ public class ConsumerLatencyParser {
 						.thenComparing(b -> b.getKey().to)
 						.thenComparing(a -> a.getKey().mdUpdateAction)
 						.thenComparing(a -> a.getKey().mdEntryType))
-				.map(e -> toCSVRow(date, directory, filePrefix, e.getKey(), e.getValue()));
+				.map(e -> toCSVRow(date, loggerName, filePrefix, e.getKey(), e.getValue()));
 		final List<String> cmds = parallelize(stream, parallelismLevel);
 
 		String csvHeader = "date,directory,file,from,to,action,type," + String.join(",", STATISTICS_CALCULATORS.keySet());
@@ -514,9 +546,12 @@ public class ConsumerLatencyParser {
 		throw new IllegalStateException("Illegal " + type + " value: " + value);
 	}
 
-	private static Map<StatisticsMetadata, Supplier<Map<String, Double>>> calculateStatistics(String fromStr, String toStr, ConsumerLatencyParser[] data, SetsContainer mergedSets, int totalValues) {
+	private static Map<StatisticsMetadata, Supplier<Map<String, Double>>> calculateStatistics(String fromStr, String toStr, ConsumerLatencyParser data) {
 		final long calculateStartTime = System.currentTimeMillis();
-		final ResizableDoubleArray latenciesAll = filter(fromStr, toStr, totalValues, c -> i -> true, data);
+		final ResizableDoubleArray array = data.getTimestamps(fromStr, toStr);
+		final ResizableDoubleArray latenciesAll = Arrays.stream(array.getInternalValues())
+				.limit(array.getNumElements())
+				.anyMatch(Double::isNaN) ? filter(array, array.getNumElements(), i -> true) : array;
 		if (latenciesAll == null) {
 			return Collections.emptyMap();
 		}
@@ -527,16 +562,16 @@ public class ConsumerLatencyParser {
 			return allStat;
 		};
 		result.put(new StatisticsMetadata(fromStr, toStr, "", ""), all);
-		if (mergedSets.uniqueActions.size() == 1) {
-			final int action = mergedSets.uniqueActions.getValues().keySet().iterator().next();
+		if (data.sets.uniqueActions.size() == 1) {
+			final int action = data.sets.uniqueActions.getValues().keySet().iterator().next();
 			System.out.printf("Skipped per-action latency calculations %s -> %s: single action=%s found%n", fromStr, toStr, action);
 			result.put(new StatisticsMetadata(fromStr, toStr, "", Integer.toString(action)), all);
 		} else {
-			for (Map.Entry<Integer, Integer> actionAndCount : mergedSets.uniqueActions.getValues().entrySet()) {
+			for (Map.Entry<Integer, Integer> actionAndCount : data.sets.uniqueActions.getValues().entrySet()) {
 				final int action = actionAndCount.getKey();
 				final Supplier<Map<String, Double>> byAction = () -> {
 					final long st = System.currentTimeMillis();
-					final ResizableDoubleArray latenciesPerAction = filter(fromStr, toStr, actionAndCount.getValue(), c -> i -> c.actions.get(i) == action, data);
+					final ResizableDoubleArray latenciesPerAction = filter(array, actionAndCount.getValue(), i -> data.actions.get(i) == action);
 					if (latenciesPerAction != null) {
 						final LinkedHashMap<String, Double> perAction = calculateStatistics(latenciesPerAction);
 						System.out.printf("Calculated latency for %s -> %s MDEntryType=all, MDUpdateAction=%s in %s ms%n", fromStr, toStr, action, System.currentTimeMillis() - st);
@@ -547,17 +582,17 @@ public class ConsumerLatencyParser {
 				result.put(new StatisticsMetadata(fromStr, toStr, "", Integer.toString(actionAndCount.getKey())), byAction);
 			}
 		}
-		if (mergedSets.uniqueTypes.size() == 1) {
-			final char type = (char) mergedSets.uniqueTypes.getValues().keySet().iterator().next().intValue();
+		if (data.sets.uniqueTypes.size() == 1) {
+			final char type = (char) data.sets.uniqueTypes.getValues().keySet().iterator().next().intValue();
 			System.out.printf("Skipped per-type latency calculations for %s -> %s: single MDEntryType=%s found%n", fromStr, toStr, type);
 			result.put(new StatisticsMetadata(fromStr, toStr, Character.toString(type), ""), all);
 		} else {
-			for (Map.Entry<Integer, Integer> typeAndCount : mergedSets.uniqueTypes.getValues().entrySet()) {
+			for (Map.Entry<Integer, Integer> typeAndCount : data.sets.uniqueTypes.getValues().entrySet()) {
 				final int type = typeAndCount.getKey();
 				char typeAsChar = (char) type;
 				final Supplier<Map<String, Double>> byType = () -> {
 					final long st = System.currentTimeMillis();
-					final ResizableDoubleArray latenciesPerType = filter(fromStr, toStr, typeAndCount.getValue(), c -> i -> c.types.get(i) == type, data);
+					final ResizableDoubleArray latenciesPerType = filter(array, typeAndCount.getValue(), i -> data.types.get(i) == type);
 					if (latenciesPerType != null) {
 						final LinkedHashMap<String, Double> perType = calculateStatistics(latenciesPerType);
 						System.out.printf("Calculated latency for %s -> %s MDEntryType=%s, MDUpdateAction=all in %s ms%n", fromStr, toStr, typeAsChar, System.currentTimeMillis() - st);
@@ -568,19 +603,19 @@ public class ConsumerLatencyParser {
 				result.put(new StatisticsMetadata(fromStr, toStr, Character.toString(typeAsChar), ""), byType);
 			}
 		}
-		if (mergedSets.uniqueActionTypeCombinations.size() == 1) {
-			final char type = (char)mergedSets.uniqueTypes.getValues().keySet().iterator().next().intValue();
-			final int action = mergedSets.uniqueActions.getValues().keySet().iterator().next();
+		if (data.sets.uniqueActionTypeCombinations.size() == 1) {
+			final char type = (char)data.sets.uniqueTypes.getValues().keySet().iterator().next().intValue();
+			final int action = data.sets.uniqueActions.getValues().keySet().iterator().next();
 			System.out.printf("Skipped per-combination latency calculations for %s -> %s: single combination of MDEntryType=%s and MDUpdateAction=%s found%n", fromStr, toStr, type, action);
 			result.put(new StatisticsMetadata(fromStr, toStr, Character.toString(type), Integer.toString(action)), all);
 		} else {
-			for (Map.Entry<Integer, Integer> cmbToCount : mergedSets.uniqueActionTypeCombinations.getValues().entrySet()) {
+			for (Map.Entry<Integer, Integer> cmbToCount : data.sets.uniqueActionTypeCombinations.getValues().entrySet()) {
 				int cmb = cmbToCount.getKey();
 				char typeAsChar = (char) (cmb % 128);
 				int action = cmb / 128;
 				final Supplier<Map<String, Double>> byActionAndType = () -> {
 					final long st = System.currentTimeMillis();
-					final ResizableDoubleArray latenciesPerCombo = filter(fromStr, toStr, cmbToCount.getValue(), c -> i -> c.types.get(i) + c.actions.get(i) * 128 == cmb, data);
+					final ResizableDoubleArray latenciesPerCombo = filter(array, cmbToCount.getValue(), i -> data.types.get(i) + data.actions.get(i) * 128 == cmb);
 					if (latenciesPerCombo != null) {
 						final LinkedHashMap<String, Double> perCombo = calculateStatistics(latenciesPerCombo);
 						System.out.printf("Calculated latency for %s -> %s MDEntryType=%s, MDUpdateAction=%s in %s ms%n", fromStr, toStr, typeAsChar, action, System.currentTimeMillis() - st);
@@ -594,23 +629,19 @@ public class ConsumerLatencyParser {
 		return result;
 	}
 
-	private static ResizableDoubleArray filter(String from, String to, int size, Function<ConsumerLatencyParser, IntPredicate> indexPredicateFactory, ConsumerLatencyParser[] data) {
+	private static ResizableDoubleArray filter(ResizableDoubleArray source, int size, IntPredicate indexPredicate) {
 		if (size == 0) {
 			return null;
 		}
 		final ResizableDoubleArray latencies = new ResizableDoubleArray(size);
-		for (ConsumerLatencyParser container : data) {
-			final IntPredicate indexPredicate = indexPredicateFactory.apply(container);
-			final ResizableDoubleArray source = container.getTimestamps(from, to);
-			final int len = source.getNumElements();
-			final double[] array = source.getInternalValues();
-			for (int i = 0; i < len; i++) {
-				final double element = array[i];
-				if (Double.isNaN(element) || !indexPredicate.test(i)) {
-					continue;
-				}
-				latencies.addElement(element);
+		final int len = source.getNumElements();
+		final double[] array = source.getInternalValues();
+		for (int i = 0; i < len; i++) {
+			final double element = array[i];
+			if (Double.isNaN(element) || !indexPredicate.test(i)) {
+				continue;
 			}
+			latencies.addElement(element);
 		}
 		return latencies.getNumElements() == 0 ? null : latencies;
 	}
