@@ -248,8 +248,8 @@ public class ConsumerLatencyParser {
 			from.setNumElements(0);
 			from.contract();
 		}
-		if (to.getCapacity() != to.getNumElements()) {
-			throw new AssertionError("capacity=" + to.getCapacity() + ", numElements=" + to.getNumElements());
+		if (to.getCapacity() != to.getNumElements()) { // array size was larger than required, so shrink
+			to.contract();
 		}
 	}
 
@@ -421,9 +421,6 @@ public class ConsumerLatencyParser {
 				final long receiveTime = getTimeFromStandardFormat(sp, indexReceiveTime);
 				final long entryTime = getEntryTime(sp, indexMDEntryDate, indexMDEntryTime);
 				final long lastUpdateTime = getTimeFromStandardFormat(sp, indexLastUpdateTime);
-				if (sendingTime - entryTime > TimeUnit.HOURS.toNanos(1)) {
-					System.out.println(line);
-				}
 
 				if (mode >= 1) {
 					//only read and parse
