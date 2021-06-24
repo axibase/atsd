@@ -18,7 +18,7 @@ The endpoint calculates OHLCV and VWAP period statistics (time bars) from raw tr
 | `startDate` | **[Required]** Start date in [ISO format](../shared/date-format.md#supported-formats) or [calendar](../shared/calendar.md) expression.  |
 | `endDate` | **[Required]** End date in [ISO format](../shared/date-format.md#supported-formats) or [calendar](../shared/calendar.md) expression. |
 | `period` | **[Required]** Period for calculating statistics formatted as `<unit> <count>` such as `1 HOUR` based on [calendar alignment](../api/data/series/period.md#alignment). |
-| `statistics` | List of [statistic](#statistics) names `statistics=name[,name]`<br>Default is `open,high,low,close,volume`. |
+| `fields` | List of [statistic](#statistics) names `statistics=name[,name]`<br>Default is `open,high,low,close,volume`. |
 | `timezone` | Time zone for evaluating [calendar expressions](../shared/calendar.md), if specified in `startDate`/`endDate` parameters. |
 | `workdayCalendar` | Workday calendar for evaluating [calendar expressions](../shared/calendar.md), if specified in `startDate`/`endDate` parameters. |
 
