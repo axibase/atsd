@@ -202,11 +202,14 @@ public class ConsumerLatencyParser {
 			return result;
 		}
 		final int totalCount = Arrays.stream(tasks).mapToInt(d -> d.actions.numElements).sum();
+		final boolean lastUpdateTimeExists = Arrays.stream(tasks).mapToInt(t -> t.lastUpdateToProcess.getNumElements()).sum() > 0;
+		if (lastUpdateTimeExists) {
+			move(Arrays.stream(tasks).skip(1).map(t -> t.lastUpdateToProcess), result.lastUpdateToProcess, totalCount);
+			move(Arrays.stream(tasks).skip(1).map(t -> t.lastUpdateToSending), result.lastUpdateToSending, totalCount);
+		}
 		move(Arrays.stream(tasks).skip(1).map(t -> t.sendingToProcess), result.sendingToProcess, totalCount);
-		move(Arrays.stream(tasks).skip(1).map(t -> t.lastUpdateToProcess), result.lastUpdateToProcess, totalCount);
 		move(Arrays.stream(tasks).skip(1).map(t -> t.receiveToProcess), result.receiveToProcess, totalCount);
 		move(Arrays.stream(tasks).skip(1).map(t -> t.entryToProcess), result.entryToProcess, totalCount);
-		move(Arrays.stream(tasks).skip(1).map(t -> t.lastUpdateToSending), result.lastUpdateToSending, totalCount);
 		move(Arrays.stream(tasks).skip(1).map(t -> t.sendingToReceive), result.sendingToReceive, totalCount);
 		move(Arrays.stream(tasks).skip(1).map(t -> t.entryToSending), result.entryToSending, totalCount);
 		move(Arrays.stream(tasks).skip(1).map(t -> t.actions), result.actions, totalCount);
@@ -244,6 +247,9 @@ public class ConsumerLatencyParser {
 			index += size;
 			from.setNumElements(0);
 			from.contract();
+		}
+		if (to.getCapacity() != to.getNumElements()) {
+			throw new AssertionError("capacity=" + to.getCapacity() + ", numElements=" + to.getNumElements());
 		}
 	}
 
@@ -415,6 +421,9 @@ public class ConsumerLatencyParser {
 				final long receiveTime = getTimeFromStandardFormat(sp, indexReceiveTime);
 				final long entryTime = getEntryTime(sp, indexMDEntryDate, indexMDEntryTime);
 				final long lastUpdateTime = getTimeFromStandardFormat(sp, indexLastUpdateTime);
+				if (sendingTime - entryTime > TimeUnit.HOURS.toNanos(1)) {
+					System.out.println(line);
+				}
 
 				if (mode >= 1) {
 					//only read and parse
