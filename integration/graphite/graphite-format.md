@@ -173,7 +173,7 @@ The entity and metrics collected by Collectl is visible under the Entity and Met
 
 ### Sensu Example
 
-[Sensu](https://sensuapp.org/) is a monitoring tool written in Ruby that uses RabbitMQ as a message broker and Redis for storing data. The tool is targeted at monitoring cloud environments.
+Sensu is a monitoring tool written in Ruby that uses RabbitMQ as a message broker and Redis for storing data. The tool is targeted at monitoring cloud environments.
 
 You can instrument Sensu to send data to ATSD using the Graphite format.
 
