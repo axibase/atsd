@@ -1510,7 +1510,7 @@ Period is a repeating time interval used to group values occurred within each in
 Period syntax:
 
 ```sql
-GROUP BY PERIOD(int count varchar unit [, option])
+GROUP BY PERIOD(time_interval [, option])
 ```
 
 `option` = `interpolate` | `align` | `extend` | `timezone`
@@ -1929,7 +1929,7 @@ Example | Description
 | `MIN` | Minimum of values. | `MIN(value)` |
 | `MAX` | Maximum of values. | `MAX(value)` |
 | `AVG` | Average of values. | `AVG(value)` |
-| `PRODUCT` | Product of values. | `PRODUCT(values)` |
+| `PRODUCT` | Product of values. | `PRODUCT(value)` |
 | `WAVG` | [Weighted average](../api/data/series/smooth.md#weighted-average) of values. | `WAVG(value)` |
 | `WTAVG` | [Time-weighted average](../api/data/series/smooth.md#weighted-time-average) of values. | `WTAVG(value)` |
 | `EMA` | [Exponential moving average](../api/data/series/smooth.md#exponential-moving-average) of values.<br>The function requires smoothing factor as the first argument. | `EMA(0.1, value)` |
@@ -3128,11 +3128,7 @@ date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ
 The `date_round` function rounds the input date to the start of the containing [calendar period](#calendar-alignment). The date can be specified as literal date, Unix time in milliseconds or a [calendar expression](../shared/calendar.md#keywords).
 
 ```java
-date_round(varchar date | bigint time, int count varchar unit)
-```
-
-```java
-date_round(calendar_expression, int count varchar unit)
+date_round(varchar date | bigint time | calendar_expression, time_interval)
 ```
 
 ```sql
@@ -3668,7 +3664,7 @@ AND LOWER(tags.file_system) LIKE '%root'
 The `LAG` function provides access to a preceding row at a specified offset from the current position.
 
 ```sql
-LAG(varchar columnName [, integer offset [, defaultValue]])
+LAG(scalar_expression [, integer offset [, defaultValue]])
 ```
 
 Example:
@@ -3763,7 +3759,7 @@ WHERE entity = 'nurswgvml007'
 The `LEAD` function provides access to a following row at a specified offset from the current position.
 
 ```sql
-LEAD(varchar columnName [, integer offset [, defaultValue]])
+LEAD(scalar_expression [, integer offset [, defaultValue]])
 ```
 
 Example:
@@ -3784,7 +3780,7 @@ The `LEAD` function operates similarly to the [`LAG`](#lag) function except that
 The `FIRST_VALUE` is an analytical function that returns the first row within the partition.
 
 ```sql
-FIRST_VALUE(varchar columnName)
+FIRST_VALUE(scalar_expression)
 ```
 
 Example:
