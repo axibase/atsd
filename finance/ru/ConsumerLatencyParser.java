@@ -1,12 +1,16 @@
 import java.io.*;
+import java.lang.management.ManagementFactory;
+import java.lang.management.OperatingSystemMXBean;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.Supplier;
-import java.util.function.ToDoubleFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.zip.GZIPInputStream;
@@ -29,10 +33,10 @@ public class ConsumerLatencyParser {
 	private static final long NANOS_IN_SECOND = TimeUnit.SECONDS.toNanos(1);
 	private static final long NANOS_IN_MICROS = TimeUnit.MICROSECONDS.toNanos(1);
 	private static final ZoneId UTC = ZoneId.of("UTC");
-	private static final Map<String, ToDoubleFunction<ResizableDoubleArray>> STATISTICS_CALCULATORS = prepareStatisticsCalculators();
+	private static final Map<String, Function<ResizableDoubleArray, Number>> STATISTICS_CALCULATORS = prepareStatisticsCalculators();
 
-	private static Map<String, ToDoubleFunction<ResizableDoubleArray>> prepareStatisticsCalculators() {
-		final Map<String, ToDoubleFunction<ResizableDoubleArray>> calculators = new LinkedHashMap<>();
+	private static Map<String, Function<ResizableDoubleArray, Number>> prepareStatisticsCalculators() {
+		final Map<String, Function<ResizableDoubleArray, Number>> calculators = new LinkedHashMap<>();
 		calculators.put("count", ResizableDoubleArray::getNumElements);
 		calculators.put("min", array -> array.compute(new Min()));
 		for (String rank : "0.1,1,5,10,25,50,75,90,95,99,99.9".split(",")) {
@@ -54,7 +58,7 @@ public class ConsumerLatencyParser {
 	private final ResizableByteArray types = new ResizableByteArray(100_000);
 	private SetsContainer sets = new SetsContainer();
 
-	public ResizableDoubleArray getTimestamps(String from, String to) {
+	public ResizableDoubleArray getTimestampsInMemory(String from, String to) {
 		if ("process".equals(to)) {
 			if ("sending".equals(from)) {
 				return sendingToProcess;
@@ -75,6 +79,39 @@ public class ConsumerLatencyParser {
 			return sendingToReceive;
 		}
 		throw new IllegalArgumentException("Latency from " + from + " to " + to + " not collected");
+	}
+
+	public ResizableDoubleArray getTimestampsFromFile(String from, String to) {
+		String dataType = f.getName().substring(0, f.getName().indexOf('.'));
+		String fileName = dataType + "_" + moexConsumerType + "_" + from + "_" + to + "_" + localDateStr;
+		try (ObjectInputStream reader = new ObjectInputStream(Files.newInputStream(Paths.get(fileName)))) {
+			return (ResizableDoubleArray) reader.readObject();
+		} catch (Exception e) {
+			return null;
+		} finally {
+			try {
+				Files.deleteIfExists(Paths.get(fileName));
+			} catch (IOException e) {
+				// pass
+			}
+		}
+	}
+
+	private void saveToFile(String from, String to) {
+		ResizableDoubleArray array = getTimestampsInMemory(from, to);
+		if (array.getNumElements() == 0) {
+			return;
+		}
+		String dataType = f.getName().substring(0, f.getName().indexOf('.'));
+		String fileName = dataType + "_" + moexConsumerType + "_" + from + "_" + to + "_" + localDateStr;
+		try (ObjectOutputStream writer = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
+			writer.writeObject(array);
+		} catch (Exception e) {
+			// pass
+		} finally {
+			array.setNumElements(0);
+			array.contract();
+		}
 	}
 
 	private final int mode;
@@ -222,6 +259,7 @@ public class ConsumerLatencyParser {
 		int index = to.numElements;
 		to.internalArray = Arrays.copyOf(to.internalArray, totalCount);
 		final byte[] internalValuesTarget = to.internalArray;
+		to.numElements = totalCount;
 		final Iterator<ResizableByteArray> iterator = fromArr.iterator();
 		while (iterator.hasNext()) {
 			ResizableByteArray from = iterator.next();
@@ -465,7 +503,6 @@ public class ConsumerLatencyParser {
 		} catch (IOException e) {
 			throw new UncheckedIOException(e);
 		}
-
 		return this;
 	}
 
@@ -477,6 +514,33 @@ public class ConsumerLatencyParser {
 		}
 	}
 
+	private static boolean canBeProcessedInMemory(long totalValues, long parallelism) {
+		final OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
+		if (operatingSystemMXBean instanceof com.sun.management.OperatingSystemMXBean) {
+			com.sun.management.OperatingSystemMXBean os = (com.sun.management.OperatingSystemMXBean)
+					operatingSystemMXBean;
+			if (parallelism == 0) {
+				parallelism = Runtime.getRuntime().availableProcessors();
+			}
+			final double multiplier = 1.1;
+			final long memoryNeededForPercentileCalculations = (long)(totalValues * 8 * 3 * parallelism * multiplier);
+			final long memoryNeededForStorage = totalValues * (7 * 8 + 2);
+			if (memoryNeededForPercentileCalculations > os.getFreePhysicalMemorySize()) {
+				System.out.printf("Not enough RAM: needed %.1f MB, available %.1f MB%n",
+						memoryNeededForPercentileCalculations / 1024.0 / 1024.0,
+						os.getFreePhysicalMemorySize() / 1024.0 / 1024.0);
+				return false;
+			}
+			if (memoryNeededForStorage + memoryNeededForPercentileCalculations > Runtime.getRuntime().maxMemory()) {
+				System.out.printf("Not enough Xmx: needed %.1f MB, available %.1f MB%n",
+						(memoryNeededForStorage + memoryNeededForPercentileCalculations) / 1024.0 / 1024.0,
+						Runtime.getRuntime().maxMemory() / 1024.0 / 1024.0);
+				return false;
+			}
+		}
+		return true;
+	}
+
 	private static void writeCsvSummary(String date, String loggerName, String filePrefix, String csvPath, ConsumerLatencyParser data, int parallelismLevel) throws IOException {
 		if (parallelismLevel <= 0 || parallelismLevel == ForkJoinPool.getCommonPoolParallelism()) {
 			parallelismLevel = 0;
@@ -484,7 +548,7 @@ public class ConsumerLatencyParser {
 		final int totalValues = data.actions.numElements;
 		System.out.println("Sample count: " + totalValues);
 		System.out.printf("Memory consumed total: %.1f MB, per metric: %.1f MB%n", (7 * 8L + 2) * totalValues / 1024.0 / 1024.0, 8L * totalValues / 1024.0 / 1024.0);
-		final Stream<String> stream = Stream.of(
+		List<Pair<String, String>> metrics = Arrays.asList(
 				Pair.create("entry", "sending"),
 				Pair.create("lastupdate", "sending"),
 				Pair.create("sending", "receive"),
@@ -492,15 +556,23 @@ public class ConsumerLatencyParser {
 				Pair.create("entry", "process"),
 				Pair.create("lastupdate", "process"),
 				Pair.create("sending", "process")
-		)
-				.flatMap(pair -> calculateStatistics(pair.getFirst(), pair.getSecond(), data).entrySet().stream())
-				.sorted(Comparator.comparing((Map.Entry<StatisticsMetadata, Supplier<Map<String, Double>>> a) -> a.getKey().mdUpdateAction)
+		);
+		final boolean inMemory = canBeProcessedInMemory(totalValues, parallelismLevel);
+		if (!inMemory) {
+			System.out.println("Low memory: use temporary files to store latencies");
+			for (Pair<String, String> metric : metrics) {
+				data.saveToFile(metric.getFirst(), metric.getSecond());
+			}
+		}
+		final Stream<String> stream = metrics.stream()
+				.flatMap(pair -> calculateStatistics(pair.getFirst(), pair.getSecond(), data, inMemory).entrySet().stream())
+				.sorted(Comparator.comparing((Map.Entry<StatisticsMetadata, Supplier<Map<String, Number>>> a) -> a.getKey().mdUpdateAction)
 						.thenComparing(b -> b.getKey().mdEntryType)
 						.thenComparing(a -> a.getKey().from)
 						.thenComparing(a -> a.getKey().to))
 				.map(e -> new AbstractMap.SimpleEntry<>(e.getKey(), e.getValue().get()))
 				.filter(e -> e.getValue() != null)
-				.sorted(Comparator.comparing((Map.Entry<StatisticsMetadata, Map<String, Double>> a) -> a.getKey().from)
+				.sorted(Comparator.comparing((Map.Entry<StatisticsMetadata, Map<String, Number>> a) -> a.getKey().from)
 						.thenComparing(b -> b.getKey().to)
 						.thenComparing(a -> a.getKey().mdUpdateAction)
 						.thenComparing(a -> a.getKey().mdEntryType))
@@ -552,18 +624,18 @@ public class ConsumerLatencyParser {
 		throw new IllegalStateException("Illegal " + type + " value: " + value);
 	}
 
-	private static Map<StatisticsMetadata, Supplier<Map<String, Double>>> calculateStatistics(String fromStr, String toStr, ConsumerLatencyParser data) {
+	private static Map<StatisticsMetadata, Supplier<Map<String, Number>>> calculateStatistics(String fromStr, String toStr, ConsumerLatencyParser data, boolean inMemory) {
 		final long calculateStartTime = System.currentTimeMillis();
-		final ResizableDoubleArray array = data.getTimestamps(fromStr, toStr);
-		final ResizableDoubleArray latenciesAll = array.getNumElements() == 0 || Arrays.stream(array.getInternalValues())
+		final ResizableDoubleArray array = inMemory ? data.getTimestampsInMemory(fromStr, toStr) : data.getTimestampsFromFile(fromStr, toStr);
+		final ResizableDoubleArray latenciesAll = array != null && (array.getNumElements() == 0 || Arrays.stream(array.getInternalValues())
 				.limit(array.getNumElements())
-				.anyMatch(Double::isNaN) ? filter(array, array.getNumElements(), i -> true) : array;
+				.anyMatch(Double::isNaN)) ? filter(array, array.getNumElements(), i -> true) : array;
 		if (latenciesAll == null) {
 			return Collections.emptyMap();
 		}
-		final Map<StatisticsMetadata, Supplier<Map<String, Double>>> result = new LinkedHashMap<>();
-		final Supplier<Map<String, Double>> all = () -> {
-			final LinkedHashMap<String, Double> allStat = calculateStatistics(latenciesAll);
+		final Map<StatisticsMetadata, Supplier<Map<String, Number>>> result = new LinkedHashMap<>();
+		final Supplier<Map<String, Number>> all = () -> {
+			final LinkedHashMap<String, Number> allStat = calculateStatistics(latenciesAll);
 			System.out.printf("Calculated latency for %s -> %s MDEntryType=all, MDUpdateAction=all in %s ms%n", fromStr, toStr, System.currentTimeMillis() - calculateStartTime);
 			return allStat;
 		};
@@ -575,11 +647,11 @@ public class ConsumerLatencyParser {
 		} else {
 			for (Map.Entry<Integer, Integer> actionAndCount : data.sets.uniqueActions.getValues().entrySet()) {
 				final int action = actionAndCount.getKey();
-				final Supplier<Map<String, Double>> byAction = () -> {
+				final Supplier<Map<String, Number>> byAction = () -> {
 					final long st = System.currentTimeMillis();
 					final ResizableDoubleArray latenciesPerAction = filter(array, actionAndCount.getValue(), i -> data.actions.get(i) == action);
 					if (latenciesPerAction != null) {
-						final LinkedHashMap<String, Double> perAction = calculateStatistics(latenciesPerAction);
+						final LinkedHashMap<String, Number> perAction = calculateStatistics(latenciesPerAction);
 						System.out.printf("Calculated latency for %s -> %s MDEntryType=all, MDUpdateAction=%s in %s ms%n", fromStr, toStr, action, System.currentTimeMillis() - st);
 						return perAction;
 					}
@@ -596,11 +668,11 @@ public class ConsumerLatencyParser {
 			for (Map.Entry<Integer, Integer> typeAndCount : data.sets.uniqueTypes.getValues().entrySet()) {
 				final int type = typeAndCount.getKey();
 				char typeAsChar = (char) type;
-				final Supplier<Map<String, Double>> byType = () -> {
+				final Supplier<Map<String, Number>> byType = () -> {
 					final long st = System.currentTimeMillis();
 					final ResizableDoubleArray latenciesPerType = filter(array, typeAndCount.getValue(), i -> data.types.get(i) == type);
 					if (latenciesPerType != null) {
-						final LinkedHashMap<String, Double> perType = calculateStatistics(latenciesPerType);
+						final LinkedHashMap<String, Number> perType = calculateStatistics(latenciesPerType);
 						System.out.printf("Calculated latency for %s -> %s MDEntryType=%s, MDUpdateAction=all in %s ms%n", fromStr, toStr, typeAsChar, System.currentTimeMillis() - st);
 						return perType;
 					}
@@ -619,11 +691,11 @@ public class ConsumerLatencyParser {
 				int cmb = cmbToCount.getKey();
 				char typeAsChar = (char) (cmb % 128);
 				int action = cmb / 128;
-				final Supplier<Map<String, Double>> byActionAndType = () -> {
+				final Supplier<Map<String, Number>> byActionAndType = () -> {
 					final long st = System.currentTimeMillis();
 					final ResizableDoubleArray latenciesPerCombo = filter(array, cmbToCount.getValue(), i -> data.types.get(i) + data.actions.get(i) * 128 == cmb);
 					if (latenciesPerCombo != null) {
-						final LinkedHashMap<String, Double> perCombo = calculateStatistics(latenciesPerCombo);
+						final LinkedHashMap<String, Number> perCombo = calculateStatistics(latenciesPerCombo);
 						System.out.printf("Calculated latency for %s -> %s MDEntryType=%s, MDUpdateAction=%s in %s ms%n", fromStr, toStr, typeAsChar, action, System.currentTimeMillis() - st);
 						return perCombo;
 					}
@@ -653,15 +725,15 @@ public class ConsumerLatencyParser {
 	}
 
 
-	private static LinkedHashMap<String, Double> calculateStatistics(ResizableDoubleArray latencies) {
+	private static LinkedHashMap<String, Number> calculateStatistics(ResizableDoubleArray latencies) {
 		return STATISTICS_CALCULATORS.entrySet().stream()
 				.collect(Collectors.toMap(Map.Entry::getKey,
-						e -> e.getValue().applyAsDouble(latencies),
+						e -> e.getValue().apply(latencies),
 						(a, b) -> b,
 						LinkedHashMap::new));
 	}
 
-	public static String toCSVRow(String date, String directory, String filePrefix, StatisticsMetadata meta, Map<String, Double> values) {
+	public static String toCSVRow(String date, String directory, String filePrefix, StatisticsMetadata meta, Map<String, Number> values) {
 		StringBuilder row = new StringBuilder()
 				.append(date).append(',').append(directory)
 				.append(',').append(filePrefix)
@@ -669,12 +741,12 @@ public class ConsumerLatencyParser {
 				.append(',').append(meta.to).append(',')
 				.append(meta.mdUpdateAction).append(',')
 				.append(meta.mdEntryType);
-		for (Map.Entry<String, Double> entry : values.entrySet()) {
+		for (Map.Entry<String, Number> entry : values.entrySet()) {
 			row.append(',');
 			if ("count".equals(entry.getKey())) {
 				row.append(entry.getValue().longValue());
 			} else {
-				row.append(String.format("%.0f", entry.getValue()));
+				row.append(String.format("%.0f", entry.getValue().doubleValue()));
 			}
 		}
 		return row.toString();
