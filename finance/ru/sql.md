@@ -987,7 +987,7 @@ PERIOD(1 DAY, 'US/Eastern')
 
 | **Name** | **Description** |
 |:---|:---|
-| `time_interval` | [**Required**] Expression which includes space-separated `count` and [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
+| `time_interval` | [**Required**] Expression which includes space-separated `count` and [Time unit](../../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
 | `timezone` | [Time Zone ID](../../shared/timezone-list.md) for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default: current database time zone.|
 
 ```sql
