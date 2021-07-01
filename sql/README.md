@@ -1510,7 +1510,7 @@ Period is a repeating time interval used to group values occurred within each in
 Period syntax:
 
 ```sql
-GROUP BY PERIOD(int count varchar unit [, option])
+GROUP BY PERIOD(time_interval [, option])
 ```
 
 `option` = `interpolate` | `align` | `extend` | `timezone`
@@ -1533,12 +1533,11 @@ PERIOD(1 DAY, entity.timeZone)
 
 | **Name** | **Description** |
 |:---|:---|
-| `count` | [**Required**] Number of time units contained in the period. |
-| `unit` | [**Required**] [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
+| `time_interval` | [**Required**] Expression which includes space-separated `count` and [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
 | `interpolate` | Apply an [interpolation function](#interpolation), such as `LINEAR` or `VALUE 0`, to add missing periods.|
 | `extend` | Add missing periods at the beginning and end of the selection interval using `VALUE {n}` or the `PREVIOUS` and `NEXT` interpolation functions.|
 | `align` | Align the period start and end. Default: `CALENDAR`.<br>Allowed values: `CALENDAR`, `START_TIME`, `END_TIME`, `FIRST_VALUE_TIME`.<br>Refer to [period alignment](#period-alignment).|
-| `timezone` | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default: current database time zone.|
+| `timezone` | [Time Zone ID](../shared/timezone-list.md) for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default: current database time zone.|
 
 ```sql
 SELECT entity, date_format(PERIOD(5 MINUTE, END_TIME)), AVG(value)
@@ -1929,7 +1928,7 @@ Example | Description
 | `MIN` | Minimum of values. | `MIN(value)` |
 | `MAX` | Maximum of values. | `MAX(value)` |
 | `AVG` | Average of values. | `AVG(value)` |
-| `PRODUCT` | Product of values. | `PRODUCT(values)` |
+| `PRODUCT` | Product of values. | `PRODUCT(value)` |
 | `WAVG` | [Weighted average](../api/data/series/smooth.md#weighted-average) of values. | `WAVG(value)` |
 | `WTAVG` | [Time-weighted average](../api/data/series/smooth.md#weighted-time-average) of values. | `WTAVG(value)` |
 | `EMA` | [Exponential moving average](../api/data/series/smooth.md#exponential-moving-average) of values.<br>The function requires smoothing factor as the first argument. | `EMA(0.1, value)` |
@@ -3128,11 +3127,7 @@ date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ
 The `date_round` function rounds the input date to the start of the containing [calendar period](#calendar-alignment). The date can be specified as literal date, Unix time in milliseconds or a [calendar expression](../shared/calendar.md#keywords).
 
 ```java
-date_round(varchar date | bigint time, int count varchar unit)
-```
-
-```java
-date_round(calendar_expression, int count varchar unit)
+date_round(varchar date | bigint time | calendar_expression, time_interval)
 ```
 
 ```sql
@@ -3151,7 +3146,7 @@ The `DATEADD` function performs calendar arithmetic by adding or subtracting an 
 * An optional [time zone name](../shared/timezone-abnf.md) can be specified as the last argument to perform calendar calculations in a user-defined time zone. By the default, the database time zone is used.
 
 ```sql
-DATEADD(varchar datePart, integer dateCount, bigint time | varchar datetime [, varchar timeZone])
+DATEADD(timeunit datePart, integer dateCount, bigint time | varchar datetime [, varchar timeZone])
 ```
 
 ```sql
@@ -3668,7 +3663,7 @@ AND LOWER(tags.file_system) LIKE '%root'
 The `LAG` function provides access to a preceding row at a specified offset from the current position.
 
 ```sql
-LAG(varchar columnName [, integer offset [, defaultValue]])
+LAG(scalar_expression [, integer offset [, defaultValue]])
 ```
 
 Example:
@@ -3677,6 +3672,7 @@ Example:
 LAG(value)
 ```
 
+* Scalar expression supports constants, references to one or more columns, arithmetic operators, CAST operators, aggregating functions
 * The default `offset` is `1`.
 * If the requested row does not exist, the function returns `NULL`, or `defaultValue` if specified.
 * The returned data type is determined similar to the [`ISNULL`](#isnull) function.
@@ -3763,7 +3759,7 @@ WHERE entity = 'nurswgvml007'
 The `LEAD` function provides access to a following row at a specified offset from the current position.
 
 ```sql
-LEAD(varchar columnName [, integer offset [, defaultValue]])
+LEAD(scalar_expression [, integer offset [, defaultValue]])
 ```
 
 Example:
@@ -3772,6 +3768,7 @@ Example:
 LEAD(value)
 ```
 
+* Scalar expression supports constants, references to one or more columns, arithmetic operators, CAST operators, aggregating functions
 * The default `offset` is `1`.
 * If the requested row does not exist, the function returns `NULL`, or `defaultValue` if specified.
 * The returned data type is determined similar to the [`ISNULL`](#isnull) function.
@@ -3784,7 +3781,7 @@ The `LEAD` function operates similarly to the [`LAG`](#lag) function except that
 The `FIRST_VALUE` is an analytical function that returns the first row within the partition.
 
 ```sql
-FIRST_VALUE(varchar columnName)
+FIRST_VALUE(scalar_expression)
 ```
 
 Example:

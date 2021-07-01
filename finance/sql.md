@@ -962,10 +962,8 @@ Period is a repeating time interval used to group values occurred within each in
 Period syntax:
 
 ```sql
-GROUP BY PERIOD(int count varchar unit [, timezone])
+GROUP BY PERIOD(time_interval [, timezone])
 ```
-
-* `timezone` = [Time Zone ID](../shared/timezone-list.md) as literal string, or `entity.timeZone`/`metric.timeZone` column.
 
 ```sql
 PERIOD(5 MINUTE)
@@ -974,9 +972,8 @@ PERIOD(1 DAY, 'US/Eastern')
 
 | **Name** | **Description** |
 |:---|:---|
-| `count` | [**Required**] Number of time units contained in the period. |
-| `unit` | [**Required**] [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
-| `timezone` | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default: current database time zone.|
+| `time_interval` | [**Required**] Expression which includes space-separated `count` and [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
+| `timezone` | [Time Zone ID](../shared/timezone-list.md) for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default: current database time zone.|
 
 ```sql
 SELECT datetime, exchange, class, symbol, max(price)
@@ -1499,11 +1496,7 @@ date_parse('31.01.2017 12:36:03.283 Europe/Berlin', 'dd.MM.yyyy HH:mm:ss.SSS ZZZ
 The function rounds the input date to the start of the containing calendar period. The date can be specified as literal date, Unix time in milliseconds or a [calendar expression](../shared/calendar.md#keywords).
 
 ```javascript
-date_round(varchar date | bigint time, int count varchar unit)
-```
-
-```javascript
-date_round(calendar_expression, int count varchar unit)
+date_round(varchar date | bigint time | calendar_expression, time_interval)
 ```
 
 ```sql
@@ -1522,7 +1515,7 @@ The `DATEADD` function performs calendar arithmetic by adding or subtracting an 
 * An optional [time zone name](../shared/timezone-abnf.md) can be specified as the last argument to perform calendar calculations in a user-defined time zone. By the default, the database time zone is used.
 
 ```javascript
-DATEADD(varchar datePart, integer dateCount, bigint time | varchar datetime [, varchar timeZone])
+DATEADD(timeunit datePart, integer dateCount, bigint time | varchar datetime [, varchar timeZone])
 ```
 
 ```sql
@@ -1939,7 +1932,7 @@ Function | Description
 The `LAG` function provides access to a preceding row at a specified offset from the current position.
 
 ```javascript
-LAG(varchar columnName [, integer offset [, defaultValue]])
+LAG(scalar_expression [, integer offset [, defaultValue]])
 ```
 
 Example:
@@ -1948,6 +1941,7 @@ Example:
 LAG(value)
 ```
 
+* Scalar expression supports constants, references to one or more columns, arithmetic operators, CAST operators, aggregating functions
 * The default `offset` is `1`.
 * If the requested row does not exist, the function returns `NULL`, or the `defaultValue` if specified.
 * The returned data type is determined similar to the [`ISNULL`](#isnull) function.
@@ -1980,7 +1974,7 @@ The `LAG` function in the `SELECT` expression is applied to the filtered result 
 The `LEAD` function provides access to a following row at a specified offset from the current position.
 
 ```javascript
-LEAD(varchar columnName [, integer offset [, defaultValue]])
+LEAD(scalar_expression [, integer offset [, defaultValue]])
 ```
 
 Example:
@@ -1989,6 +1983,7 @@ Example:
 LEAD(value)
 ```
 
+* Scalar expression supports constants, references to one or more columns, arithmetic operators, CAST operators, aggregating functions
 * The default `offset` is `1`.
 * If the requested row does not exist, the function returns `NULL`, or `defaultValue` if specified.
 * The returned data type is determined similar to the [`ISNULL`](#isnull) function.
@@ -2001,7 +1996,7 @@ The `LEAD` function operates similarly to the [`LAG`](#lag) function except that
 The `FIRST_VALUE` is an analytical function that returns the first row within the partition.
 
 ```javascript
-FIRST_VALUE(varchar columnName)
+FIRST_VALUE(scalar_expression)
 ```
 
 Example:
