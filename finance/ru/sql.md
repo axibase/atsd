@@ -980,8 +980,6 @@ Period syntax:
 GROUP BY PERIOD(time_interval [, timezone])
 ```
 
-* `timezone` = [Time Zone ID](../../shared/timezone-list.md) as literal string, or `entity.timeZone`/`metric.timeZone` column.
-
 ```sql
 PERIOD(5 MINUTE)
 PERIOD(1 DAY, 'US/Eastern')
@@ -989,9 +987,8 @@ PERIOD(1 DAY, 'US/Eastern')
 
 | **Name** | **Description** |
 |:---|:---|
-| `count` | [**Required**] Number of time units contained in the period. |
-| `unit` | [**Required**] [Time unit](../../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
-| `timezone` | Time zone for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default: current database time zone.|
+| `time_interval` | [**Required**] Expression which includes space-separated `count` and [Time unit](../api/data/series/time-unit.md) such as `HOUR`, `DAY`, `WEEK`, `MONTH`, `QUARTER`, `YEAR`. |
+| `timezone` | [Time Zone ID](../../shared/timezone-list.md) for aligning periods in `CALENDAR` mode, such as `'US/Eastern'`, `'UTC'`, or `entity.timeZone`.<br>Default: current database time zone.|
 
 ```sql
 SELECT datetime, exchange, class, symbol, max(price)
@@ -1537,7 +1534,7 @@ The `DATEADD` function performs calendar arithmetic by adding or subtracting an 
 * An optional [time zone name](../../shared/timezone-abnf.md) can be specified as the last argument to perform calendar calculations in a user-defined time zone. By the default, the database time zone is used.
 
 ```javascript
-DATEADD(varchar datePart, integer dateCount, bigint time | varchar datetime [, varchar timeZone])
+DATEADD(timeunit datePart, integer dateCount, bigint time | varchar datetime [, varchar timeZone])
 ```
 
 ```sql
@@ -1962,6 +1959,7 @@ Example:
 LAG(value)
 ```
 
+* Scalar expression supports constants, references to one or more columns, arithmetic operators, CAST operators, aggregating functions
 * The default `offset` is `1`.
 * If the requested row does not exist, the function returns `NULL`, or the `defaultValue` if specified.
 * The returned data type is determined similar to the [`ISNULL`](#isnull) function.
@@ -2004,6 +2002,7 @@ Example:
 LEAD(value)
 ```
 
+* Scalar expression supports constants, references to one or more columns, arithmetic operators, CAST operators, aggregating functions
 * The default `offset` is `1`.
 * If the requested row does not exist, the function returns `NULL`, or `defaultValue` if specified.
 * The returned data type is determined similar to the [`ISNULL`](#isnull) function.
